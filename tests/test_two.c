@@ -11,40 +11,32 @@
 
 Test(errors_bad_ac, bad_ac)
 {
-	char *av_zero = "1";
-	char *av_one = "1";
-	char *av_two = "1";
-	char *av[] = {av_zero, av_one, av_two};
+	char *av[] = {"1", "1", "1"};
+	int i = 0;
 
 	cr_assert(errors(1, av) == 84);
 }
 
 Test(errors_bad_av, bad_av_two)
 {
-	char *av_zero = "3";
-	char *av_one = "1";
-	char *av_two = "2134R134";
-	char *av[] = {av_zero, av_one, av_two};
+	char *av[] = {"3", "1", "123E23"};
+	int i = 0;
 
 	cr_assert(errors(1, av) == 84);
 }
 
 Test(errors_bad_av, bad_av_one)
 {
-	char *av_zero = "3";
-	char *av_one = "Z234Z";
-	char *av_two = "1";
-	char *av[] = {av_zero, av_one, av_two};
+	char *av[] = {"3", "ZZ3", "1"};
+	int i = 0;
 
 	cr_assert(errors(3, av) == 84);
 }
 
 Test(all_good, good_ac_av)
 {
-	char *av_zero = "3";
-	char *av_one = "26";
-	char *av_two = "35";
-	char *av[] = {av_zero, av_one, av_two};
+	char *av[] = {"3", "26", "35"};
+	int i = 0;
 
 	cr_assert(errors(3, av) == 0);
 }

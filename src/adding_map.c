@@ -8,20 +8,25 @@
 #include <stdlib.h>
 #include "my.h"
 
+char tabs(int index, int *pipe, int nb_line)
+{
+	if (index == 0 || index == (nb_line * 2))
+		return ('*');
+	else if (index > pipe[0] && index < pipe[1])
+		return ('|');
+	else
+		return (' ');
+}
+
 char **adding_middle_map(char **tab, int nb_line)
 {
+	int pipe[] = {(nb_line - 1), (nb_line + 1)};
 	int index = 0;
 	int index_glob = 1;
-	int pipe[] = {(nb_line - 1), (nb_line + 1)};
 
 	while (index_glob <= nb_line) {
 		while (index <= (nb_line * 2)) {
-			if (index == 0 || index == (nb_line * 2))
-				tab[index_glob][index] = '*';
-			else if (index > pipe[0] && index < pipe[1])
-				tab[index_glob][index] = '|';
-			else
-				tab[index_glob][index] = ' ';
+			tab[index_glob][index] = tabs(index, pipe, nb_line);
 			index++;
 		}
 		pipe[0] = pipe[0] - 1;
