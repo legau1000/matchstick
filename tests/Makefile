@@ -7,7 +7,8 @@
 
 CFLAGS	=	-Iinclude
 
-SRC	=	test.c		\
+SRC	=	test.c			\
+		test_two.c		\
 		../src/error/errors.c		
 
 OBJ	=	$(SRC:.c=.o)
