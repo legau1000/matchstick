@@ -9,5 +9,7 @@
 #define __MY_H__
 
 int errors(int, char**);
+int my_getnbr(char const *str);
+char **adding_map(int nb_line);
 
 #endif

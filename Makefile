@@ -8,11 +8,13 @@
 CC	=	gcc
 
 SRC	=	src/error/errors.c			\
-		src/main.c
+		src/main.c				\
+		src/adding_map.c			\
+		src/my_getnbr.c
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	a.aout
+NAME	=	matchstick
 
 .SILENT:
 
