@@ -24,5 +24,7 @@ int errors(int ac, char **av)
 			return (84);
 		index++;
 	}
+	if (my_getnbr(av[1]) <= 0 || my_getnbr(av[2]) <= 0)
+		return (84);
 	return (0);
 }

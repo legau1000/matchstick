@@ -9,6 +9,7 @@ CFLAGS	=	-Iinclude
 
 SRC	=	test.c			\
 		test_two.c		\
+		../src/my_getnbr.c	\
 		../src/error/errors.c		
 
 OBJ	=	$(SRC:.c=.o)
