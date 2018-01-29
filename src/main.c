@@ -8,16 +8,27 @@
 #include <stdlib.h>
 #include "my.h"
 
-void print_tab(char **tab)
+void print_tab(int nb_line, char **tab)
 {
 	int index = 0;
 
 	printf("print_map\n");
-	while (tab[index]) {
-		printf("%s\n", tab[index]);
+	while (index <= nb_line + 1) {
+		printf("%s\t%d\n", tab[index], index);
 		index++;
 	}
 	printf("END\n");
+}
+
+void free_tab(char **tab, int nb_line)
+{
+	int index = 0;
+
+	while (index <= nb_line + 1) {
+		free(tab[index]);
+		index++;
+	}
+	free(tab);
 }
 
 int main(int ac, char **av)
@@ -28,7 +39,8 @@ int main(int ac, char **av)
 		return (84);
 	if (!(tab = adding_map(my_getnbr(av[1]))))
 		return (84);
-	print_tab(tab);
+	print_tab(my_getnbr(av[1]), tab);
 	//algo();
+	free_tab(tab, my_getnbr(av[1]));
 	return (0);
 }
