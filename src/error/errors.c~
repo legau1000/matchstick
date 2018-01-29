@@ -5,7 +5,7 @@
 ** errors
 */
 
-#include "my.h"
+#include "../my.h"
 
 int errors(int ac, char **av)
 {

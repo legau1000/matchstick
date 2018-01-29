@@ -15,14 +15,42 @@ void redirect_all_std(void)
 	cr_redirect_stderr();
 }
 
-Test(errors, simple_string, .init = redirect_all_std)
+Test(errors_bad_ac, bad_ac, .init = redirect_all_std)
 {
-	errors(1, "1 1 2 3 4 5 6 2");
-	cr_assert_stdout_eq_str("test\n");
+	char *av_zero = "1";
+	char *av_one = "1";
+	char *av_two = "1";
+	char *av[] = {av_zero, av_one, av_two};
+
+	cr_assert(errors(1, av) == 84);
 }
 
-Test(simple, test) {
-	cr_assert(errors(1, "1 1 2 3 4 5 6 2"), "test");
-	int a = errors(1, "Z 2 3 4 5 6 2");
-	cr_assert((a == 0 || a == 84));
+Test(errors_bad_av, bad_av_two, .init = redirect_all_std)
+{
+	char *av_zero = "3";
+	char *av_one = "1";
+	char *av_two = "2134R134";
+	char *av[] = {av_zero, av_one, av_two};
+
+	cr_assert(errors(1, av) == 84);
+}
+
+Test(errors_bad_av, bad_av_one, .init = redirect_all_std)
+{
+	char *av_zero = "3";
+	char *av_one = "Z234Z";
+	char *av_two = "1";
+	char *av[] = {av_zero, av_one, av_two};
+
+	cr_assert(errors(3, av) == 84);
+}
+
+Test(all_good, good_ac_av, .init = redirect_all_std)
+{
+	char *av_zero = "3";
+	char *av_one = "26";
+	char *av_two = "35";
+	char *av[] = {av_zero, av_one, av_two};
+
+	cr_assert(errors(3, av) == 0);
 }

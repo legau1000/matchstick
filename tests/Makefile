@@ -8,7 +8,7 @@
 CFLAGS	=	-Iinclude
 
 SRC	=	test.c		\
-		../get_next_line.c
+		../src/error/errors.c		
 
 OBJ	=	$(SRC:.c=.o)
 

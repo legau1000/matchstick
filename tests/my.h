@@ -8,5 +8,6 @@
 #ifndef __MY_H__
 #define __MY_H__
 
+int errors(int ac, char **av);
 
 #endif
