@@ -17,6 +17,8 @@ char **adding_map(int nb_line)
 		return (tab);
 	while (tab[index]) {
 		tab[index] = malloc(sizeof(char) * (nb_line + 1));
+		if (!tab[index])
+			return (NULL);
 		tab[index][nb_line] = '\0';
 		index++;
 	}
