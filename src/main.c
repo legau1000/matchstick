@@ -13,7 +13,8 @@ void print_tab(int nb_line, char **tab)
 	int index = 0;
 
 	while (index <= nb_line + 1) {
-		printf("%s\t%d\n", tab[index], index);
+		my_putstr(tab[index]);
+		my_putstr("\n");
 		index++;
 	}
 }
@@ -32,13 +33,14 @@ void free_tab(char **tab, int nb_line)
 int main(int ac, char **av)
 {
 	char **tab = NULL;
+	int result = 0;
 
 	if (errors(ac, av) == 84)
 		return (84);
 	if (!(tab = adding_map(my_getnbr(av[1]))))
 		return (84);
 	print_tab(my_getnbr(av[1]), tab);
-	algo(tab, my_getnbr(av[1]), my_getnbr(av[2]));
+	result = algo(tab, my_getnbr(av[1]), my_getnbr(av[2]));
 	free_tab(tab, my_getnbr(av[1]));
-	return (0);
+	return (result);
 }

@@ -11,6 +11,9 @@ SRC	=	src/error/errors.c			\
 		src/main.c				\
 		src/get_next_line.c			\
 		src/algo.c				\
+		src/my_putstr.c				\
+		src/my_putchar.c			\
+		src/my_put_nbr.c			\
 		src/ia_player.c				\
 		src/my_strlen.c				\
 		src/player_turn.c			\

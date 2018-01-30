@@ -45,11 +45,13 @@ int verif_only_number(char *mat, char *lin)
 
 int err(char *mat, char *lin, char **tab, int nb_line)
 {
-	int line = my_getnbr(lin);
-	int match = my_getnbr(mat);
+	int line = 0;
+	int match = 0;
 
 	if (verif_only_number(mat, lin) == 84)
 		return (84);
+	line = my_getnbr(lin);
+	match = my_getnbr(mat);
 	if (line > nb_line || line <= 0) {
 		write(1, "Error: this line is out of range\n", 33);
 		return (84);

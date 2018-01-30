@@ -5,6 +5,7 @@
 ** ia_player by florian gau
 */
 
+#include <unistd.h>
 #include "my.h"
 
 int chose_ia_play(char **tab, int line, int *nb_del)
@@ -36,11 +37,16 @@ char **ia_turn(char **tab, int nb_line, s_ia *ia, int *nb_pipe)
 	int it_ok = 0;
 	int line = 1;
 
+	write(1, "\nAI's turn...\n", 14);
 	if (nb_del == 0)
 		nb_del = ia->nbdel;
-	printf("nb_del = %d\n", nb_del);
 	line = chose_ia_play(tab, line, &nb_del);
 	tab = del_pipe(tab, line, nb_del, nb_line);
 	*nb_pipe = *nb_pipe - nb_del;
+	write (1, "AI removed ", 11);
+	my_put_nbr(nb_del);
+	write (1, " match(es) from line ", 21);
+	my_put_nbr(line);
+	write(1, "\n", 1);
 	return (tab);
 }
