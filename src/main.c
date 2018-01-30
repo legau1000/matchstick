@@ -38,7 +38,7 @@ int main(int ac, char **av)
 	if (!(tab = adding_map(my_getnbr(av[1]))))
 		return (84);
 	print_tab(my_getnbr(av[1]), tab);
-	algo(tab, my_getnbr(av[1]));
+	algo(tab, my_getnbr(av[1]), my_getnbr(av[2]));
 	free_tab(tab, my_getnbr(av[1]));
 	return (0);
 }

@@ -11,6 +11,7 @@ SRC	=	test.c			\
 		test_two.c		\
 		test_err.c		\
 		../src/my_getnbr.c	\
+		../src/error_player.c	\
 		../src/my_strlen.c	\
 		../src/player_turn.c	\
 		../src/get_next_line.c	\
