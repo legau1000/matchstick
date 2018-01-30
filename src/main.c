@@ -17,7 +17,6 @@ void print_tab(int nb_line, char **tab)
 		printf("%s\t%d\n", tab[index], index);
 		index++;
 	}
-	printf("END\n");
 }
 
 void free_tab(char **tab, int nb_line)
@@ -40,7 +39,7 @@ int main(int ac, char **av)
 	if (!(tab = adding_map(my_getnbr(av[1]))))
 		return (84);
 	print_tab(my_getnbr(av[1]), tab);
-	//algo();
+	algo(tab, my_getnbr(av[1]));
 	free_tab(tab, my_getnbr(av[1]));
 	return (0);
 }

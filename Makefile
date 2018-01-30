@@ -9,6 +9,10 @@ CC	=	gcc
 
 SRC	=	src/error/errors.c			\
 		src/main.c				\
+		src/get_next_line.c			\
+		src/algo.c				\
+		src/my_strlen.c				\
+		src/player_turn.c			\
 		src/adding_map.c			\
 		src/my_getnbr.c
 

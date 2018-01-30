@@ -9,5 +9,6 @@
 #define __MY_H__
 
 int errors(int ac, char **av);
+int err(char *mat, char *lin, char **tab, int nb_line);
 
 #endif
