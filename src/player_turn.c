@@ -42,6 +42,30 @@ int err(char *mat, char *lin, char **tab, int nb_line)
 	return (0);
 }
 
+char **player_can(char *match, char *line)
+{
+	write(1, "Player removed ", 15);
+	write(1, match, my_strlen(match));
+	write(1, " match(es) from line ", 21);
+	write(1, line, my_strlen(line));
+	write(1, "\n", 1);
+}
+
+char **del_pipe(char **tab, char *line, char *match)
+{
+	int index = 0;
+	int nb_del = 0;
+
+	while (nb_del < my_getnbr(match)) {
+		if (tab[my_getnbr(line)][index] == '|') {
+			nb_del++;
+			tab[my_getnbr(line)][index] = ' ';
+		}
+		index++;
+	}
+	return (tab);
+}
+
 char **player_turn(char **tab, int nb_line, int *nb_pipe)
 {
 	char *line = NULL;
@@ -52,13 +76,14 @@ char **player_turn(char **tab, int nb_line, int *nb_pipe)
 	write(1, "Matches: ", 9);
 	match = get_next_line(0);
 	if (err(match, line, tab, nb_line) == 0) {
-		write(1, "Player removed ", 15);
-		write(1, match, my_strlen(match));
-		write(1, " match(es) from line ", 21);
-		write(1, line, my_strlen(line));
-		write(1, "\n", 1);
+		player_can(match, line);
+		tab = del_pipe(tab, line, match);
+		*nb_pipe = *nb_pipe - my_getnbr(match);
+	} else {
+		free(line);
+		free(match);
+		return (player_turn(tab, nb_line, nb_pipe));
 	}
-	*nb_pipe = *nb_pipe - 1;
 	free(line);
 	free(match);
 	return (tab);

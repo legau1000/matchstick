@@ -15,5 +15,6 @@ void algo(char **tab, int nb_line);
 char *get_next_line(int fd);
 char **player_turn(char **tab, int nb_line, int *nb_pipe);
 int my_strlen(char const *str);
+void print_tab(int nb_line, char **tab);
 
 #endif

@@ -13,6 +13,7 @@ void algo(char **tab, int nb_line)
 
 	while (nb_pipe > 0) {
 		tab = player_turn(tab, nb_line, &nb_pipe);
+		print_tab(nb_line, tab);
 		//ia_turn();
 	}
 }

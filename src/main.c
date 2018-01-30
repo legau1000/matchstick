@@ -12,7 +12,6 @@ void print_tab(int nb_line, char **tab)
 {
 	int index = 0;
 
-	printf("print_map\n");
 	while (index <= nb_line + 1) {
 		printf("%s\t%d\n", tab[index], index);
 		index++;
