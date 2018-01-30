@@ -28,14 +28,14 @@ int verif_only_number(char *mat, char *lin)
 
 	while (mat[index_mat]) {
 		if (mat[index_mat] > '9' || mat[index_mat] < '0') {
-			write(1, "Done only number!\n", 18);
+			write(1, "Type only numbers!\n", 19);
 			return (84);
 		}
 		index_mat++;
 	}
 	while (lin[index_lin]) {
 		if (lin[index_lin] > '9' || lin[index_lin] < '0') {
-			write(1, "Done only number!\n", 18);
+			write(1, "Type only numbers!\n", 19);
 			return (84);
 		}
 		index_lin++;

@@ -51,13 +51,13 @@ char **player_turn(char **tab, int nb_line, int *nb_pipe, s_ia *ia)
 	write(1, "Matches: ", 9);
 	if (!(match = get_next_line(0)))
 		return (NULL);
-	if (err(match, line, tab, nb_line) == 0 && ia->nbdel >= my_getnbr(match)) {
+	if (err(match, line, tab, nb_line) == 0 &&
+		ia->nbdel >= my_getnbr(match)) {
 		player_can(match, line);
 		tab = del_pipe(tab, my_getnbr(line), my_getnbr(match), nb_line);
 		*nb_pipe = *nb_pipe - my_getnbr(match);
 	} else {
-		free(line);
-		free(match);
+		free_value(ia, line, match);
 		return (player_turn(tab, nb_line, nb_pipe, ia));
 	}
 	free_value(ia, line, match);

@@ -17,7 +17,7 @@ typedef struct s_name
 int errors(int, char**);
 int my_getnbr(char const *str);
 char **adding_map(int nb_line);
-int algo(char **tab, int nb_line, int nbdel);
+int algo(char **tab, int nb_line, int nbdel, s_ia);
 char *get_next_line(int fd);
 char **player_turn(char **tab, int nb_line, int *nb_pipe, s_ia*);
 int my_strlen(char const *str);
