@@ -41,7 +41,7 @@ char **ia_turn(char **tab, int nb_line, s_ia *ia, int *nb_pipe)
 	if (nb_del == 0)
 		nb_del = ia->nbdel;
 	line = chose_ia_play(tab, line, &nb_del);
-	if (nb_del == *nb_pipe && *nb_pipe != 0)
+	if (nb_del == *nb_pipe && *nb_pipe != 1)
 		nb_del = nb_del - 1;
 	tab = del_pipe(tab, line, nb_del, nb_line);
 	*nb_pipe = *nb_pipe - nb_del;

@@ -28,11 +28,11 @@ NAME	=	matchstick
 
 .SILENT:
 
+all:	$(NAME)
+
 $(NAME):	$(OBJ)
 	$(CC)  -o $(NAME) $(OBJ)
 		@echo "Compilation faite!"
-
-all:	$(NAME)
 
 clean:
 	rm -f $(OBJ)
