@@ -29,5 +29,6 @@ int nb_pipe_here(char **tab, int line);
 char **del_pipe(char **tab, int line, int match, int);
 void my_put_nbr(int nb);
 void my_putstr(char const *str);
+void print_tab(int nb_line, char **tab);
 
 #endif

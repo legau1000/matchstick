@@ -10,7 +10,17 @@ CFLAGS	=	-Iinclude
 SRC	=	test.c			\
 		test_two.c		\
 		test_err.c		\
+		tab_test.c		\
+		algo_test.c		\
+		test_get_next_line.c	\
 		../src/my_getnbr.c	\
+		../src/algo.c		\
+		../src/my_put_nbr.c	\
+		../src/my_putchar.c	\
+		../src/ia_player.c	\
+		../src/my_putstr.c	\
+		../src/print_all.c	\
+		../src/adding_map.c	\
 		../src/error_player.c	\
 		../src/my_strlen.c	\
 		../src/player_turn.c	\

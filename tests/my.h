@@ -10,5 +10,6 @@
 
 int errors(int ac, char **av);
 int err(char *mat, char *lin, char **tab, int nb_line);
+char tabs(int index, int *pipe, int nb_line);
 
 #endif
