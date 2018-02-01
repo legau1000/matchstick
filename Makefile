@@ -36,11 +36,11 @@ $(NAME):	$(OBJ)
 
 clean:
 	rm -f $(OBJ)
-		@echo "Clean faite!"
+		@echo "Clean fait!"
 
 fclean: clean
 	rm -f $(NAME)
-		@echo "FClean faite!"
+		@echo "FClean fait!"
 
 re:	fclean all
 		@echo "Re fait!"

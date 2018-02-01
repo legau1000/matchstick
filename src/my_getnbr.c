@@ -5,6 +5,12 @@
 ** my_getnbr
 */
 
+int verif_str(char const *str, int *neg, int i)
+{
+	if (str[i] == '-')
+		*neg = *neg * (-1);
+}
+
 int	my_getnbr(char const *str)
 {
 	int	i = 0;
@@ -13,8 +19,7 @@ int	my_getnbr(char const *str)
 
 	while (str[i]) {
 		while (str[i] == '-' || str[i] == '+') {
-			if (str[i] == '-')
-				neg = -neg;
+			verif_str(str, &neg, i);
 			i++;
 		}
 		while ('0' <= str[i] && str[i] <= '9') {

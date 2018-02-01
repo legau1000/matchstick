@@ -24,7 +24,7 @@ int chose_ia_play(char **tab, int line, int *nb_del)
 	else if (nb_pipe < *nb_del && tab[line][1] != '*') {
 		line++;
 		return (chose_ia_play(tab, line, nb_del));
-	}else {
+	} else {
 		line = 1;
 		*nb_del = *nb_del - 1;
 		return (chose_ia_play(tab, line, nb_del));

@@ -43,12 +43,20 @@ int verif_only_number(char *mat, char *lin)
 	return (0);
 }
 
+static int verif_size(char *mat, char *lin)
+{
+	if (my_strlen(mat) == 0 || my_strlen(lin) == 0)
+		return (84);
+	else
+		return (0);
+}
+
 int err(char *mat, char *lin, char **tab, int nb_line)
 {
 	int line = 0;
 	int match = 0;
 
-	if (verif_only_number(mat, lin) == 84)
+	if (!mat || !lin || verif_only_number(mat, lin) == 84)
 		return (84);
 	line = my_getnbr(lin);
 	match = my_getnbr(mat);
