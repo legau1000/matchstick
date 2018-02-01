@@ -26,9 +26,13 @@ int err(char *mat, char *lin, char **tab, int nb_line);
 int verif_only_number(char *mat, char *lin);
 char **ia_turn(char **tab, int, s_ia *ia, int*);
 int nb_pipe_here(char **tab, int line);
-char **del_pipe(char **tab, int line, int match, int);
+char **del_pipe(char **tab, int, int, int);
 void my_put_nbr(int nb);
 void my_putstr(char const *str);
 void print_tab(int nb_line, char **tab);
+int verif_match(char *mat);
+int verif_line(char *lin);
+void free_value(char *line, char *match);
+void free_tab(char **tab, int nb_line);
 
 #endif

@@ -5,19 +5,9 @@
 ** main
 */
 
+#include <unistd.h>
 #include <stdlib.h>
 #include "my.h"
-
-void free_tab(char **tab, int nb_line)
-{
-	int index = 0;
-
-	while (index <= nb_line + 1) {
-		free(tab[index]);
-		index++;
-	}
-	free(tab);
-}
 
 int main(int ac, char **av)
 {
@@ -31,6 +21,11 @@ int main(int ac, char **av)
 		return (84);
 	print_tab(my_getnbr(av[1]), tab);
 	result = algo(tab, my_getnbr(av[1]), my_getnbr(av[2]), ia);
+	if (result == 1) {
+		write(1, "I lost... snif... but I'll get you next time!!", 46);
+		write(1, "\n", 1);
+	} else if (result == 2)
+		write(1, "You lost, too bad...\n", 21);
 	free_tab(tab, my_getnbr(av[1]));
 	return (result);
 }

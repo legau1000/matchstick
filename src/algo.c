@@ -14,19 +14,17 @@ int algo(char **tab, int nb_line, int nb_del_max, s_ia ia)
 
 	ia.nbdel = nb_del_max;
 	while (nb_pipe > 0 && tab) {
+		write(1, "Your turn:\n", 11);
 		tab = player_turn(tab, nb_line, &nb_pipe, &ia);
 		if (tab)
 			print_tab(nb_line, tab);
 		if (nb_pipe > 0 && tab) {
 			ia_turn(tab, nb_line, &ia, &nb_pipe);
 			print_tab(nb_line, tab);
-		} else if (tab) {
-			write(1, "You lost, too bad...\n", 21);
+		} else if (tab)
 			return (2);
-		}
 	}
 	if (!tab)
 		return (0);
-	write(1, "I lost... snif... but I'll get you next time!!\n", 47);
 	return (1);
 }

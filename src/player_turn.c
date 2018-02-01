@@ -33,17 +33,32 @@ char **del_pipe(char **tab, int line, int match, int nb_line)
 	return (tab);
 }
 
-void free_value(s_ia *ia, char *line, char *match)
+char *give_value_to_match(char *match)
 {
-	free(line);
-	free(match);
+	write(1, "Matches: ", 9);
+	if (!(match = get_next_line(0)))
+		return (NULL);
+	while (verif_match(match) != 0) {
+		free(match);
+		write(1, "Matches: ", 9);
+		if (!(match = get_next_line(0)))
+			return (NULL);
+	}
+	return (match);
 }
 
-void free_value_and_incre(s_ia *ia, char *line, char *match)
+char *give_value_to_line(char *line)
 {
-	free(line);
-	free(match);	
-	ia->match = my_getnbr(match);
+	write(1, "Line: ", 6);
+	if (!(line = get_next_line(0)))
+		return (NULL);
+	while (verif_line(line) != 0) {
+		free(line);
+		write(1, "Line ", 6);
+		if (!(line = get_next_line(0)))
+			return (NULL);
+	}
+	return (line);
 }
 
 char **player_turn(char **tab, int nb_line, int *nb_pipe, s_ia *ia)
@@ -51,21 +66,20 @@ char **player_turn(char **tab, int nb_line, int *nb_pipe, s_ia *ia)
 	char *line = NULL;
 	char *match = NULL;
 
-	write(1, "Your turn:\nLine: ", 17);
-	if (!(line = get_next_line(0)))
-	    return (NULL);
-	write(1, "Matches: ", 9);
-	if (!(match = get_next_line(0)))
-	    return (NULL);
+	if (!(line = give_value_to_line(line)))
+		return (NULL);
+	if (!(match = give_value_to_match(match)))
+		return (NULL);
 	if (line && match && err(match, line, tab, nb_line) == 0 &&
 	    ia->nbdel >= my_getnbr(match)) {
 		player_can(match, line);
 		tab = del_pipe(tab, my_getnbr(line), my_getnbr(match), nb_line);
 		*nb_pipe = *nb_pipe - my_getnbr(match);
-	} else if (line && match){
-		free_value(ia, line, match);
+	} else {
+		free_value(line, match);
 		return (player_turn(tab, nb_line, nb_pipe, ia));
 	}
-	free_value_and_incre(ia, line, match);
+	ia->match = my_getnbr(match);
+	free_value(line, match);
 	return (tab);
 }

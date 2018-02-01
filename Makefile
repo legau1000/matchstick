@@ -20,7 +20,8 @@ SRC	=	src/error/errors.c			\
 		src/player_turn.c			\
 		src/error_player.c			\
 		src/adding_map.c			\
-		src/my_getnbr.c
+		src/my_getnbr.c				\
+		src/free_all.c
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -21,21 +21,29 @@ int nb_pipe_here(char **tab, int line)
 	return (nb_pipe);
 }
 
-int verif_only_number(char *mat, char *lin)
+int verif_match(char *mat)
 {
 	int index_mat = 0;
-	int index_lin = 0;
 
 	while (mat[index_mat]) {
 		if (mat[index_mat] > '9' || mat[index_mat] < '0') {
-			write(1, "Type only numbers!\n", 19);
+			write(1, "Error: invalid input ", 21);
+			write(1, "(positive number expected)\n", 31);
 			return (84);
 		}
 		index_mat++;
 	}
+	return (0);
+}
+
+int verif_line(char *lin)
+{
+	int index_lin = 0;
+
 	while (lin[index_lin]) {
 		if (lin[index_lin] > '9' || lin[index_lin] < '0') {
-			write(1, "Type only numbers!\n", 19);
+			write(1, "Error: invalid input ", 21);
+			write(1, "(positive number expected)\n", 31);
 			return (84);
 		}
 		index_lin++;
@@ -56,7 +64,7 @@ int err(char *mat, char *lin, char **tab, int nb_line)
 	int line = 0;
 	int match = 0;
 
-	if (!mat || !lin || verif_only_number(mat, lin) == 84)
+	if (!mat || !lin)
 		return (84);
 	line = my_getnbr(lin);
 	match = my_getnbr(mat);
