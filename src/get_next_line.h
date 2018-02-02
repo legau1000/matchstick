@@ -7,4 +7,7 @@
 
 #ifndef  READ_SIZE
 #    define  READ_SIZE 12
+
+char *get_next_line(int);
+
 #endif

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "get_next_line.h"
+#include "../src/get_next_line.h"
 
 Test(Next_line, first_line)
 {
@@ -22,6 +22,7 @@ Test(Next_line, first_line)
 
 	cr_assert(line[0] == '#');
 	cr_assert(line[1] == '#');
+	free(line);
 }
 
 Test(Next_line, Second_line)
@@ -38,6 +39,7 @@ Test(Next_line, Second_line)
 		cr_assert(line[i] == test[i]);
 		i++;
 	}
+	free(line);
 }
 
 Test(Bad_fd, Bad_fd)
@@ -47,6 +49,7 @@ Test(Bad_fd, Bad_fd)
 	int i = 0;
 
 	cr_assert(line == NULL);
+	free(line);
 }
 
 Test(Just_n, one_n)
@@ -57,5 +60,6 @@ Test(Just_n, one_n)
 
 	cr_assert(line[0] == '\0');
 	line = get_next_line(fd);
-	cr_assert(line == NULL);
+	cr_assert(line == NULL);	
+	free(line);
 }
