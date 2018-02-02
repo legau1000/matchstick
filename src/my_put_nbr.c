@@ -26,6 +26,6 @@ void	my_put_nbr(int nb)
 	if (verif_neg_or_little(&nb) == 0) {
 	} else if (nb >= 10) {
 		my_put_nbr(nb / 10);
-	} else
-		my_putchar(nb + '0');
+	}
+	my_putchar(nb + '0');
 }
