@@ -10,12 +10,13 @@
 
 int algo(char **tab, int nb_line, int nb_del_max, s_ia ia)
 {
+	int pipe[] = {nb_line, nb_del_max};
 	int nb_pipe = nb_line * nb_line;
 
 	ia.nbdel = nb_del_max;
 	while (nb_pipe > 0 && tab) {
 		write(1, "\nYour turn:\n", 12);
-		tab = player_turn(tab, nb_line, &nb_pipe, &ia);
+		tab = player_turn(tab, pipe, &nb_pipe, &ia);
 		if (tab)
 			print_tab(nb_line, tab);
 		if (nb_pipe > 0 && tab) {

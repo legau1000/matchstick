@@ -34,13 +34,13 @@ int verif_match(char *mat)
 		index_mat++;
 	}
 	if (my_getnbr(mat) == 0) {
-		write(1, "Error: this line is out of range\n", 33);	
+		write(1, "Error: this line is out of range\n", 33);
 		return (84);
 	}
 	return (0);
 }
 
-int verif_line(char *lin)
+int verif_line(char *lin, int nb_line)
 {
 	int index_lin = 0;
 
@@ -52,7 +52,7 @@ int verif_line(char *lin)
 		}
 		index_lin++;
 	}
-	if (my_getnbr(lin) == 0) {
+	if (my_getnbr(lin) == 0 || my_getnbr(lin) > nb_line) {
 		write(1, "Error: this line is out of range\n", 33);
 		return (84);
 	}
@@ -67,7 +67,7 @@ static int verif_size(char *mat, char *lin)
 		return (0);
 }
 
-int err(char *mat, char *lin, char **tab, int nb_line)
+int err(char *mat, char *lin, char **tab, int *pipe)
 {
 	int line = 0;
 	int match = 0;
@@ -76,16 +76,18 @@ int err(char *mat, char *lin, char **tab, int nb_line)
 		return (84);
 	line = my_getnbr(lin);
 	match = my_getnbr(mat);
-	if (line > nb_line || line <= 0) {
-		write(1, "Error: this line is out of range\n", 33);
-		return (84);
-	}
 	if (match <= 0) {
 		write(1, "Error: you have to remove at least one match\n", 45);
 		return (84);
 	}
 	if (match > nb_pipe_here(tab, line)) {
 		write(1, "Error: not enough matches on this line\n", 39);
+		return (84);
+	}
+	if (match > pipe[1]) {
+		write(1, "Error: you cannot remove more than ", 35);
+		my_put_nbr(pipe[1]);
+		write(1, " matches per turn\n", 18);
 		return (84);
 	}
 	return (0);

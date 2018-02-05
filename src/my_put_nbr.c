@@ -9,23 +9,21 @@
 
 void	my_putchar(char c);
 
-int verif_neg_or_little(int *nb)
+void norme_put_nbr(int *nb)
 {
-	if (*nb == -2147483648) {
+	if (*nb == -2147483648)
 		write(1, "-2147483648", 11);
-		return (1);
-	} else if (*nb < 0) {
+	else if (*nb < 0) {
 		my_putchar('-');
 		*nb = *nb * (-1);
 	}
-	return (0);
 }
 
 void	my_put_nbr(int nb)
 {
-	if (verif_neg_or_little(&nb) == 0) {
-	} else if (nb >= 10) {
+	norme_put_nbr(&nb);
+	if (nb >= 10) {
 		my_put_nbr(nb / 10);
-	}
-	my_putchar(nb + '0');
+	} else
+		my_putchar(nb + '0');
 }

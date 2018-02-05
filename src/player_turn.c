@@ -47,12 +47,12 @@ char *give_value_to_match(char *match)
 	return (match);
 }
 
-char *give_value_to_line(char *line)
+char *give_value_to_line(char *line, int nb_line)
 {
 	write(1, "Line: ", 6);
 	if (!(line = get_next_line(0)))
 		return (NULL);
-	while (verif_line(line) != 0) {
+	while (verif_line(line, nb_line) != 0) {
 		free(line);
 		write(1, "Line: ", 6);
 		if (!(line = get_next_line(0)))
@@ -61,23 +61,23 @@ char *give_value_to_line(char *line)
 	return (line);
 }
 
-char **player_turn(char **tab, int nb_line, int *nb_pipe, s_ia *ia)
+char **player_turn(char **tab, int *pipe, int *nb_pipe, s_ia *ia)
 {
 	char *line = NULL;
 	char *match = NULL;
 
-	if (!(line = give_value_to_line(line)))
+	if (!(line = give_value_to_line(line, pipe[0])))
 		return (NULL);
 	if (!(match = give_value_to_match(match)))
 		return (NULL);
-	if (line && match && err(match, line, tab, nb_line) == 0 &&
+	if (line && match && err(match, line, tab, pipe) == 0 &&
 	    ia->nbdel >= my_getnbr(match)) {
 		player_can(match, line);
-		tab = del_pipe(tab, my_getnbr(line), my_getnbr(match), nb_line);
+		tab = del_pipe(tab, my_getnbr(line), my_getnbr(match), pipe[0]);
 		*nb_pipe = *nb_pipe - my_getnbr(match);
 	} else {
 		free_value(line, match);
-		return (player_turn(tab, nb_line, nb_pipe, ia));
+		return (player_turn(tab, pipe, nb_pipe, ia));
 	}
 	ia->match = my_getnbr(match);
 	free_value(line, match);
