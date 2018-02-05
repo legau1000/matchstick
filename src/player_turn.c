@@ -54,7 +54,7 @@ char *give_value_to_line(char *line)
 		return (NULL);
 	while (verif_line(line) != 0) {
 		free(line);
-		write(1, "Line ", 6);
+		write(1, "Line: ", 6);
 		if (!(line = get_next_line(0)))
 			return (NULL);
 	}

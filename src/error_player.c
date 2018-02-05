@@ -33,6 +33,10 @@ int verif_match(char *mat)
 		}
 		index_mat++;
 	}
+	if (my_getnbr(mat) == 0) {
+		write(1, "Error: this line is out of range\n", 33);	
+		return (84);
+	}
 	return (0);
 }
 
@@ -47,6 +51,10 @@ int verif_line(char *lin)
 			return (84);
 		}
 		index_lin++;
+	}
+	if (my_getnbr(lin) == 0) {
+		write(1, "Error: this line is out of range\n", 33);
+		return (84);
 	}
 	return (0);
 }
