@@ -38,12 +38,6 @@ char *give_value_to_match(char *match)
 	write(1, "Matches: ", 9);
 	if (!(match = get_next_line(0)))
 		return (NULL);
-	while (verif_match(match) != 0) {
-		free(match);
-		write(1, "Matches: ", 9);
-		if (!(match = get_next_line(0)))
-			return (NULL);
-	}
 	return (match);
 }
 
