@@ -51,15 +51,3 @@ Test(Bad_fd, Bad_fd)
 	cr_assert(line == NULL);
 	free(line);
 }
-
-Test(Just_n, one_n)
-{
-	int fd = open("tests/bidon", O_RDONLY);
-	char *line = get_next_line(fd);
-	int i = 0;
-
-	cr_assert(line[0] == '\0');
-	line = get_next_line(fd);
-	cr_assert(line == NULL);	
-	free(line);
-}

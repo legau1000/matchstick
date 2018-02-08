@@ -47,8 +47,6 @@ re:	fclean all
 		@echo "Re fait!"
 
 tests_run:
-	make -C tests/ re
-	./units_tests
-	make -C tests/ fclean
+	make -C tests/
 
 .PHONY: clean fclean re all

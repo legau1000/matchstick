@@ -36,7 +36,7 @@ NAME	=	units_tests
 
 $(NAME):	$(OBJ)
 	gcc -o $(NAME) $(OBJ) -lcriterion -lgcov
-	mv units_tests ../
+	./units_tests
 		@echo Compilation tests faite!
 
 all:	$(NAME)
@@ -46,13 +46,13 @@ clean:
 		@echo Clean fait!
 
 fclean: clean
+	rm units_tests
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f ../src/*.gcda
 	rm -f ../src/*.gcno
 	rm -f ../src/error/*.gcda
 	rm -f ../src/error/*.gcno
-	rm -f ../$(NAME)
 		@echo Fclean fait!
 
 re:	fclean all
