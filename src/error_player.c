@@ -28,14 +28,14 @@ int verif_match(char *mat)
 	while (mat[index_mat]) {
 		if (mat[index_mat] > '9' || mat[index_mat] < '0') {
 			write(1, "Error: invalid input ", 21);
-			write(1, "(positive number expected)\n", 31);
+			write(1, "(positive number expected)\n", 27);
 			return (84);
 		}
 		index_mat++;
 	}
 	if (my_strlen(mat) == 0) {
 		write(1, "Error: invalid input ", 21);
-		write(1, "(positive number expected)\n", 31);
+		write(1, "(positive number expected)\n", 27);
 		return (84);
 	}
 	if (my_getnbr(mat) <= 0) {
