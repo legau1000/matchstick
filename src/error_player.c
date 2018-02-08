@@ -52,7 +52,7 @@ int verif_line(char *lin, int nb_line)
 	while (lin[index_lin]) {
 		if (lin[index_lin] > '9' || lin[index_lin] < '0') {
 			write(1, "Error: invalid input ", 21);
-			write(1, "(positive number expected)\n", 31);
+			write(1, "(positive number expected)\n", 27);
 			return (84);
 		}
 		index_lin++;
