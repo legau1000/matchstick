@@ -33,6 +33,11 @@ int verif_match(char *mat)
 		}
 		index_mat++;
 	}
+	if (my_strlen(mat) == 0) {
+		write(1, "Error: invalid input ", 21);
+		write(1, "(positive number expected)\n", 31);
+		return (84);
+	}
 	if (my_getnbr(mat) <= 0) {
 		write(1, "Error: you have to remove at least one match\n", 45);
 		return (84);
@@ -72,7 +77,7 @@ int err(char *mat, char *lin, char **tab, int *pipe)
 	int line = 0;
 	int match = 0;
 
-	if (!mat || !lin)
+	if (verif_match(mat) || !mat || !lin)
 		return (84);
 	line = my_getnbr(lin);
 	match = my_getnbr(mat);
@@ -86,5 +91,5 @@ int err(char *mat, char *lin, char **tab, int *pipe)
 		write(1, " matches per turn\n", 18);
 		return (84);
 	}
-	return (verif_match(mat));
+	return (0);
 }

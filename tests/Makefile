@@ -5,7 +5,7 @@
 ## makefile
 ##
 
-CFLAGS	=	-Iinclude
+CFLAGS	=	-Iinclude --coverage
 
 SRC	=	test.c			\
 		test_two.c		\
@@ -35,7 +35,7 @@ NAME	=	units_tests
 .SILENT:
 
 $(NAME):	$(OBJ)
-	gcc -o $(NAME) $(OBJ) -lcriterion --coverage
+	gcc -o $(NAME) $(OBJ) -lcriterion -lgcov
 	mv units_tests ../
 		@echo Compilation tests faite!
 
@@ -46,6 +46,12 @@ clean:
 		@echo Clean fait!
 
 fclean: clean
+	rm -f *.gcda
+	rm -f *.gcno
+	rm -f ../src/*.gcda
+	rm -f ../src/*.gcno
+	rm -f ../src/error/*.gcda
+	rm -f ../src/error/*.gcno
 	rm -f ../$(NAME)
 		@echo Fclean fait!
 
