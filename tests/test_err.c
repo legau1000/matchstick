@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "my.h"
+#include "units_test.h"
 
 Test(bad_line, badline)
 {

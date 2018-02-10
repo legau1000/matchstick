@@ -8,15 +8,9 @@
 #include <unistd.h>
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "my.h"
+#include "units_test.h"
 
-void redirect_all_std(void)
-{
-	cr_redirect_stdout();
-	cr_redirect_stderr();
-}
-
-Test(bad_arg_neg, neg_arg_av_one, .init = redirect_all_std)
+Test(bad_arg_neg, neg_arg_av_one)
 {
 	char *av[] = {"3", "-34", "35"};
 	int i = 0;
@@ -24,7 +18,7 @@ Test(bad_arg_neg, neg_arg_av_one, .init = redirect_all_std)
 	cr_assert(errors(3, av) == 84);
 }
 
-Test(bad_arg_neg, neg_arg_av_two, .init = redirect_all_std)
+Test(bad_arg_neg, neg_arg_av_two)
 {
 	char *av[] = {"3", "26", "-35"};
 	int i = 0;
@@ -32,7 +26,7 @@ Test(bad_arg_neg, neg_arg_av_two, .init = redirect_all_std)
 	cr_assert(errors(3, av) == 84);
 }
 
-Test(sad_arg_null, neg_arg_av_one, .init = redirect_all_std)
+Test(sad_arg_null, neg_arg_av_one)
 {
 	char *av[] = {"3", "0", "-35"};
 	int i = 0;
@@ -40,7 +34,7 @@ Test(sad_arg_null, neg_arg_av_one, .init = redirect_all_std)
 	cr_assert(errors(3, av) == 84);
 }
 
-Test(bad_arg_null, neg_arg_av_one, .init = redirect_all_std)
+Test(bad_arg_null, neg_arg_av_one)
 {
 	char *av[] = {"3", "34", "0"};
 	int i = 0;

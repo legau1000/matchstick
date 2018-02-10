@@ -8,6 +8,10 @@
 CFLAGS	=	-Iinclude --coverage
 
 SRC	=	test.c			\
+		strlen_test.c		\
+		putchar_test.c		\
+		getnbr_test.c		\
+		putstr_test.c		\
 		test_two.c		\
 		test_err.c		\
 		tab_test.c		\
@@ -58,4 +62,4 @@ fclean: clean
 re:	fclean all
 		@echo RE fait!
 
-.PHONY: clean
+.PHONY: clean fclean re

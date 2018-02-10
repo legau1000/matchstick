@@ -7,7 +7,7 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "my.h"
+#include "units_test.h"
 
 Test(index_NULL_or_egal_nb_line, test_index_for_created_map)
 {

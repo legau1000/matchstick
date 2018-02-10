@@ -7,7 +7,7 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "my.h"
+#include "units_test.h"
 
 Test(errors_bad_ac, bad_ac)
 {
