@@ -12,5 +12,8 @@ int errors(int ac, char **av);
 int err(char *mat, char *lin, char **tab, int*);
 char tabs(int index, int *pipe, int nb_line);
 int my_strlen(char*);
+void my_putchar(char);
+int my_getnbr(char*);
+void my_putstr(char*);
 
 #endif
